@@ -1,0 +1,190 @@
+/* Estilos generales para el cuerpo de la página */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f2f5;
+}
+
+/* Un contenedor genérico para centrar contenido */
+.container {
+    background: rgb(175, 192, 247);
+    padding: 2rem 3rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 350px;
+}
+
+/* Estilos para los títulos */
+h1, h2 {
+    color: #000000;
+}
+
+/* Estilos para los campos de texto */
+input[type="text"],
+input[type="password"] {
+    display: block;
+    width: 100%;
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+    padding: 12px;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+/* Estilos para el botón */
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo específico para el mensaje de bienvenida */
+#mensaje-bienvenida {
+    font-size: 1.5em;
+    color: #000000;
+}
+
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    box-sizing: border-box;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.welcome-message {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.welcome-message h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.career-selector {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.career-selector select {
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.main-content, .main-footer {
+    padding-top: 80px; /* Espacio para el header fijo */
+    text-align: center;
+}
+
+/* --- Estilos para la cuadrícula de ramos --- */
+
+.main-content {
+    width: 100%;
+    max-width: 1200px; /* Un ancho máximo para pantallas grandes */
+    margin: 0 auto; /* Centrar el contenido principal */
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+.ramos-grid {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos pasen a la siguiente línea */
+    gap: 1.5rem; /* Espacio entre los cuadros */
+    justify-content: center; /* Centra los cuadros en la línea */
+    border: 2px solid #333;
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.ramo-box {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    
+    /* Flex-basis controla el tamaño base. 30% significa ~3 por fila */
+    flex-basis: 30%; 
+    flex-grow: 1; /* Permite que los cuadros crezcan para llenar el espacio */
+}
+
+/* --- Estilos para el Hover Effect y Colores de Promedio --- */
+
+.ramo-box {
+    /* ... (tus estilos existentes para ramo-box) ... */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Transición suave */
+    position: relative; /* Necesario para posicionar el promedio */
+    overflow: hidden; /* Oculta lo que se salga del cuadro */
+}
+
+.ramo-box:hover {
+    transform: scale(1.03); /* Agranda ligeramente el cuadro al pasar el mouse */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.ramo-nombre {
+    /* El nombre ahora es el único visible por defecto */
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.ramo-promedio {
+    /* Oculto por defecto */
+    position: absolute;
+    bottom: -50px; /* Lo posicionamos fuera de la vista */
+    left: 0;
+    width: 100%;
+    padding: 10px 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: bottom 0.3s ease-in-out; /* Animación de deslizamiento */
+}
+
+.ramo-box:hover .ramo-promedio {
+    bottom: 0; /* Al hacer hover, el promedio se desliza hacia arriba */
+}
+
+/* --- Clases para los colores de estado --- */
+
+.ramo-aprobando {
+    background-color: #D4EDDA; /* Verde pastel (aprobando) */
+    border-left: 5px solid #28A745; /* Borde izquierdo verde fuerte */
+}
+
+.ramo-reprobando {
+    background-color: #F8D7DA; /* Rojo pastel (reprobando) */
+    border-left: 5px solid #DC3545; /* Borde izquierdo rojo fuerte */
+}
+
