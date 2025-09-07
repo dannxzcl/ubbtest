@@ -143,9 +143,16 @@ public class UbbScrapingService {
         } else {
             // El usuario es nuevo, lo creamos.
             // Necesitamos scrapear su nombre de la página de inicio.
-            Document dashboardDoc = loginResponse.parse(); // Jsoup parsea el HTML de la respuesta
-            String nombreUsuario = dashboardDoc.select("a[href*='perfil_egreso'] + a").text().trim();
-            if (nombreUsuario.isEmpty()) {
+            // 1. Obtenemos la página inicial de asignaturas, que contiene toda la info.
+            Document doc = getInitialAsignaturasPage(sessionId);
+
+            // 2. Extraemos el nombre y apellido del usuario.
+            // Buscamos la etiqueta <label> que está justo después de la que contiene "Nombres"
+            String nombres = doc.select("label.blue:contains(Nombres) + label").text().trim();
+            String apellidos = doc.select("label.blue:contains(Apellidos) + label").text().trim();
+            String nombreUsuario = nombres + " " + apellidos;
+
+            if (nombreUsuario.equals(" ")) {
                 nombreUsuario = "Usuario Desconocido"; // Valor por defecto
             }
 
